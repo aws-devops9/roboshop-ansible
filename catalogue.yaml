@@ -5,7 +5,7 @@
     - name : Disable old NodeJS and Enable NodeJS 18
       ansible.builtin.command: dnf module disable nodejs -y ; dnf module enable nodejs:18 -y
 
-    - naem: InstallNodeJS
+    - name: Install NodeJS
       ansible.builtin.package:
         name: nodejs
         state: present
