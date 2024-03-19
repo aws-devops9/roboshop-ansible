@@ -58,10 +58,10 @@
       ansible.builtin.command: mongo --host mongodb.learndevops.space --quiet --eval 'db = db.getSiblingDB("catalogue"); db.products.count()'
       register: product_count
 
-    - name: Print the count
-      ansible.builtin.debug:
-        msg: "Product count is: {{product_count}}"
+    # - name: Print the count
+    #   ansible.builtin.debug:
+    #     msg: "Product count is: {{product_count}}"
 
     - name: load catalogue data into mongodb
       ansible.builtin.command: mongo --host mongodb.learndevops.space < /app/schema/catalogue.js
-      
+      when: product_count.stdout == 0
