@@ -61,3 +61,7 @@
     - name: Print the count
       ansible.builtin.debug:
         msg: "Product count is: {{product_count}}"
+
+    - name: load catalogue data into mongodb
+      ansible.builtin.command: mongo --host mongodb.learndevops.space < /app/schema/catalogue.js
+      
