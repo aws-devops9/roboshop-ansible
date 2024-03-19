@@ -65,3 +65,9 @@
     - name: load catalogue data into mongodb
       ansible.builtin.command: mongo --host mongodb.learndevops.space < /app/schema/catalogue.js
       when: product_count.stdout == 0
+
+    - name: enable and start catalogue
+      ansible.builtin.servcie:
+        name: catalogue
+        enabled: yes 
+        state: restarted
