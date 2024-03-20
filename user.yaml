@@ -45,7 +45,7 @@
         daemon_reload: yes 
       
     - name: copy mongodb repo
-      src: mongo.repo 
+      src: mongodb.repo 
       dest: /etc/yum.repos.d/mongodb.repo
 
     - name: Install mongodb client
