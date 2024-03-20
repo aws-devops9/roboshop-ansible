@@ -73,7 +73,7 @@
         msg: "schema output: {{schema}}" 
 
     - name: loading shipping data into mysql 
-      ansible.builtin.shell: mysql -h mysql.learndevops.space -uroot -p{{mysql_password}} < /app/schema/shipping.sql 
+      ansible.builtin.shell: mysql -h mysql.learndevops.space -uroot -p{{mysql_password}} < /app/schema/shipping.sql # We haev to use builtin.shell command as it will login and load the contenets builtin.command will not work
       when: schema.stdout == "0"
 
     - name: Restart shipping 
