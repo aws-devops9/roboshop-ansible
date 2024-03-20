@@ -24,7 +24,7 @@
     - name: download shipping.zip 
       ansible.builtin.get_url:
         url: https://roboshop-builds.s3.amazonaws.com/shipping.zip
-        dest: /etc/yum.repos.d/mongodb.repo
+        dest: /tmp
     
     - name: unzipping shipping.zip 
       ansible.builtin.unarchive:
