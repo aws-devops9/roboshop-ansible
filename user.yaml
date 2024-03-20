@@ -60,13 +60,10 @@
       ansible.builtin.debug:
         msg: "Product count is: {{product_count}}"
 
-    - name: load catalogue data into mongodb
-      ansible.builtin.command: mongo --host mongodb.learndevops.space < /app/schema/catalogue.js
-      when: product_count.stdout == 0
-
     - name: load user application into mongodb 
       ansible.builtin.command: mongo --host mongodb.learndevops.space < /app/schema/user.js
-    
+      when: product_count.stdout == "0"
+
     - name: Enable and Restart User
       ansible.builtin.service:
         name: User
