@@ -1,5 +1,5 @@
-- name: payment
-  hosts: payment
+- name: rabbitmq
+  hosts: rabbitmq
   become: yes  
   tasks: 
     - name: Download the Earlang Script
