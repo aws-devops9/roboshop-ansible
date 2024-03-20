@@ -1,6 +1,8 @@
 - name: shipping 
   hosts: shipping 
   become: yes 
+  vars: 
+    mysql_password: RoboShop@1
   tasks: 
     - name: Install maven 
       ansible.builtin.package:
@@ -63,7 +65,7 @@
         state: present
 
     - name: loading shipping data into mysql 
-      ansible.builtin.command: mysql -h mysql.learndevops.space -uroot -pRoboShop@1 < /app/schema/shipping.sql 
+      ansible.builtin.command: mysql -h mysql.learndevops.space -uroot -pR{{mysql_password}} < /app/schema/shipping.sql 
 
     - name: Restart shipping 
       ansible.builtin.service: 
