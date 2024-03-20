@@ -12,7 +12,7 @@
 
     - name: add roboshop User
       ansible.builtin.user:
-        name; roboshop 
+        name: roboshop 
 
     - name: recursively remove app directory
       ansible.builtin.file:
