@@ -1,5 +1,5 @@
 - name: Redis
-  hosts: Redis
+  hosts: redis
   become: yes 
   tasks:
     - name: Install Remi Repo Release 8
@@ -24,4 +24,3 @@
         name: redis
         enabled: yes 
         state: started
-        
