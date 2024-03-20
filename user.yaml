@@ -52,17 +52,17 @@
     - name: Install mongodb client
       ansible.builtin.shell: dnf install mongodb-org-shell -y
 
-    - name: get the categories count
+    - name: get the user count
       ansible.builtin.command: mongo --host mongodb.learndevops.space --quiet --eval 'db = db.getSiblingDB("user"); db.products.count()'
-      register: product_count
+      register: user_count
 
     - name: Print the count
       ansible.builtin.debug:
-        msg: "Product count is: {{product_count}}"
+        msg: "User count is: {{product_count}}"
 
     - name: load user application into mongodb 
       ansible.builtin.command: mongo --host mongodb.learndevops.space < /app/schema/user.js
-      when: product_count.stdout == "0"
+      when: user_count.stdout == "0"
 
     - name: Enable and Restart User
       ansible.builtin.service:
